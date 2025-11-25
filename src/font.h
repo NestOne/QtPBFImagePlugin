@@ -1,7 +1,7 @@
 #ifndef FONT_H
 #define FONT_H
 
-#include <QFont>
+#include "QtGUI/QFont"
 
 class QJsonArray;
 

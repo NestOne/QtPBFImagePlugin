@@ -1,6 +1,6 @@
-#include <QString>
-#include <QFontDatabase>
-#include <QJsonArray>
+#include  "QtCore/QString"
+#include "QtGui/QFontDatabase"
+#include "QtCore/QJsonArray"
 #include "font.h"
 
 

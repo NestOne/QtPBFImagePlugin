@@ -1,12 +1,12 @@
 #ifndef FUNCTION_H
 #define FUNCTION_H
 
-#include <QList>
-#include <QPointF>
-#include <QColor>
-#include <QPair>
-#include <QString>
-#include <QJsonValue>
+#include "QtCore/QList"
+#include "QtCore/QPointF"
+#include "QtGui/QColor"
+#include "QtCore/QPair"
+#include "QtCore/QString"
+#include "QtCore/QJsonValue"
 
 class QJsonObject;
 

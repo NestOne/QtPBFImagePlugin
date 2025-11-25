@@ -1,11 +1,11 @@
 #ifndef SPRITES_H
 #define SPRITES_H
 
-#include <QRect>
-#include <QMap>
-#include <QImage>
-#include <QString>
-#include <QMutex>
+#include  "QtCore/QRect"
+#include  "QtCore/QMap"
+#include  "QtGUI/QImage"
+#include  "QtCore/QString"
+#include  "QtCore/QMutex"
 
 class QJsonObject;
 

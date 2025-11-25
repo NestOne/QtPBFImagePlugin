@@ -1,9 +1,9 @@
 #ifndef DATA_H
 #define DATA_H
 
-#include <QByteArray>
-#include <QVector>
-#include <QVariant>
+#include "QtCore/QByteArray.h"
+#include "QtCore/QVector"
+#include "QtCore/QVariant"
 
 class Data
 {

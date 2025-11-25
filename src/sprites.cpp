@@ -1,7 +1,7 @@
-#include <QJsonDocument>
-#include <QJsonObject>
-#include <QFile>
-#include <QDebug>
+#include "QtCore/QJsonObject"
+#include "QtCore/QJsonDocument"
+#include "QtCore/QFile"
+#include "QtCore/QDebug"
 #include "sprites.h"
 
 static QImage sdf2img(const QImage &sdf, const QColor &color)

@@ -1,5 +1,5 @@
-#include <QFontMetrics>
-#include <QPainter>
+#include "QtGui/QFontMetrics"
+#include "QtGui/QPainter"
 #include "textpathitem.h"
 
 static void swap(const QLineF &line, QPointF *p1, QPointF *p2)
@@ -23,10 +23,10 @@ static bool intersection(const QLineF &line, const QRectF &rect, QPointF *p1,
 {
 	QPointF *p = p1;
 
-	if (line.intersects(QLineF(rect.topLeft(), rect.topRight()), p)
+	if (line.intersect(QLineF(rect.topLeft(), rect.topRight()), p)
 	  == QLineF::BoundedIntersection)
 		p = p2;
-	if (line.intersects(QLineF(rect.topLeft(), rect.bottomLeft()), p)
+	if (line.intersect(QLineF(rect.topLeft(), rect.bottomLeft()), p)
 	  == QLineF::BoundedIntersection) {
 		if (p == p2) {
 			swap(line, p1, p2);
@@ -34,7 +34,7 @@ static bool intersection(const QLineF &line, const QRectF &rect, QPointF *p1,
 		}
 		p = p2;
 	}
-	if (line.intersects(QLineF(rect.bottomRight(), rect.bottomLeft()), p)
+	if (line.intersect(QLineF(rect.bottomRight(), rect.bottomLeft()), p)
 	  == QLineF::BoundedIntersection) {
 		if (p == p2) {
 			swap(line, p1, p2);
@@ -42,7 +42,7 @@ static bool intersection(const QLineF &line, const QRectF &rect, QPointF *p1,
 		}
 		p = p2;
 	}
-	if (line.intersects(QLineF(rect.bottomRight(), rect.topRight()), p)
+	if (line.intersect(QLineF(rect.bottomRight(), rect.topRight()), p)
 	  == QLineF::BoundedIntersection) {
 		if (p == p2) {
 			swap(line, p1, p2);
@@ -57,16 +57,16 @@ static bool intersection(const QLineF &line, const QRectF &rect, QPointF *p1,
 
 static bool intersection(const QLineF &line, const QRectF &rect, QPointF *p)
 {
-	if (line.intersects(QLineF(rect.topLeft(), rect.topRight()), p)
+	if (line.intersect(QLineF(rect.topLeft(), rect.topRight()), p)
 	  == QLineF::BoundedIntersection)
 		return true;
-	if (line.intersects(QLineF(rect.topLeft(), rect.bottomLeft()), p)
+	if (line.intersect(QLineF(rect.topLeft(), rect.bottomLeft()), p)
 	  == QLineF::BoundedIntersection)
 		return true;
-	if (line.intersects(QLineF(rect.bottomRight(), rect.bottomLeft()), p)
+	if (line.intersect(QLineF(rect.bottomRight(), rect.bottomLeft()), p)
 	  == QLineF::BoundedIntersection)
 		return true;
-	if (line.intersects(QLineF(rect.bottomRight(), rect.topRight()), p)
+	if (line.intersect(QLineF(rect.bottomRight(), rect.topRight()), p)
 	  == QLineF::BoundedIntersection)
 		return true;
 
@@ -281,7 +281,7 @@ void TextPathItem::paint(QPainter *painter) const
 			painter->drawText(QPoint(1, fm.descent()), text().at(i));
 			painter->setTransform(t);
 
-			int width = fm.horizontalAdvance(text().at(i));
+			int width = 1;//TODO 需要找到QT5里面对应的接口 fm.horizontalAdvance(text().at(i));
 			percent += ((qreal)width / (qreal)textWidth) * factor;
 		}
 
@@ -298,7 +298,7 @@ void TextPathItem::paint(QPainter *painter) const
 		painter->drawText(QPoint(0, fm.descent()), text().at(i));
 		painter->setTransform(t);
 
-		int width = fm.horizontalAdvance(text().at(i));
+		int width = 1;//TODO 需要找到QT5里面对应的接口 fm.horizontalAdvance(text().at(i));
 		percent += ((qreal)width / (qreal)textWidth) * factor;
 	}
 

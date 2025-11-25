@@ -1,5 +1,6 @@
-#include <QStandardPaths>
-#include <QDir>
+#include "QtCore/QStandardPaths"
+#include "QtCore/QDir"
+
 #include "pbfplugin.h"
 #include "pbfhandler.h"
 #include "style.h"
@@ -13,7 +14,7 @@ PBFPlugin::PBFPlugin()
 		loadStyles(styleDir);
 
 	if (_styles.isEmpty()) {
-		Q_INIT_RESOURCE(pbfplugin);
+		//Q_INIT_RESOURCE(pbfplugin);
 		loadStyles(":/style");
 	}
 }

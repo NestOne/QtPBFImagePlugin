@@ -1,6 +1,6 @@
-#include <QPainter>
-#include <QtMath>
-#include <QStaticText>
+#include "QtGui/QPainter"
+#include "QtCore/QtMath"
+#include "QtGui/QStaticText"
 #include "textpointitem.h"
 
 

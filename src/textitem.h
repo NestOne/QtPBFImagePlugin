@@ -1,11 +1,12 @@
 #ifndef TEXTITEM_H
 #define TEXTITEM_H
 
-#include <QString>
-#include <QPainterPath>
-#include <QPen>
-#include <QFont>
-#include <QRectF>
+#include  "QtCore/QString"
+#include  "QtGui/QPainterPath"
+#include  "QtGui/QPen"
+#include  "QtGui/QFont"
+#include  "QtCore/QRectF"
+
 #include "text.h"
 
 class QPainter;

@@ -1,10 +1,10 @@
 #ifndef TEXT_H
 #define TEXT_H
 
-#include <QList>
-#include <QRectF>
-#include <QFont>
-#include <QPen>
+#include "QtCore/QList"
+#include "QtCore/QRectF"
+#include "QtGui/QFont"
+#include "QtGui/QPen"
 
 class QImage;
 class QPainterPath;

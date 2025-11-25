@@ -1,9 +1,9 @@
 #ifndef PBFHANDLER_H
 #define PBFHANDLER_H
 
-#include <QImageIOHandler>
-#include <QVariant>
-#include <QSize>
+#include  "QtGUI/QImageIOHandler"
+#include  "QtCore/QVariant"
+#include  "QtCore/QSize"
 
 class QImage;
 class Style;

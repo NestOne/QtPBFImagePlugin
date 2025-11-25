@@ -1,7 +1,8 @@
-#include <QFontMetrics>
-#include <QPainter>
-#include <QSet>
-#include <QMap>
+#include "QtGui/QPainter"
+#include "QtGui/QFontMetrics"
+#include "QtCore/QSet"
+#include "QtCore/QMap"
+
 #include "text.h"
 #include "textpointitem.h"
 #include "textpathitem.h"

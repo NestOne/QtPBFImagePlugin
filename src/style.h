@@ -1,15 +1,16 @@
 #ifndef STYLE_H
 #define STYLE_H
 
-#include <QString>
-#include <QVector>
-#include <QPair>
-#include <QVariantHash>
-#include <QStringList>
-#include <QSet>
-#include <QPen>
-#include <QBrush>
-#include <QFont>
+#include  "QtCore/QString"
+#include  "QtCore/QVector"
+#include  "QtCore/QPair"
+#include  "QtCore/QVariantHash"
+#include  "QtCore/QStringList"
+#include  "QtCore/QSet"
+#include  "QtGui/QPen"
+#include  "QtGui/QBrush"
+#include  "QtGui/QFont"
+
 #include "pbf.h"
 #include "text.h"
 #include "function.h"

@@ -1,0 +1,6 @@
+[requires]
+qt/5.6.0@supermap/win
+freetype/2.10.4@supermap/win
+
+[generators]
+json

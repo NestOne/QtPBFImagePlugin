@@ -1,12 +1,12 @@
-#include <QImageIOPlugin>
+#include "QtGui/QImageIOPlugin"
 
 class Style;
 
 class PBFPlugin : public QImageIOPlugin
 {
-	Q_OBJECT
+	/*Q_OBJECT
 	Q_PLUGIN_METADATA(IID "org.qt-project.Qt.QImageIOHandlerFactoryInterface"
-	  FILE "pbfplugin.json")
+	  FILE "pbfplugin.json")*/
 
 public:
 	PBFPlugin();

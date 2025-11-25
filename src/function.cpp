@@ -1,6 +1,8 @@
 #include <cmath>
-#include <QJsonObject>
-#include <QJsonArray>
+
+#include "QtCore/QJsonObject"
+#include "QtCore/QJsonArray"
+
 #include "color.h"
 #include "function.h"
 

@@ -1,9 +1,10 @@
-#include <QImage>
-#include <QIODevice>
-#include <QtEndian>
-#include <QJsonDocument>
-#include <QJsonArray>
-#include <QDebug>
+#include "QtGui/QImage.h"
+#include "QtCore/QIODevice"
+#include "QtCore/QtEndian"
+#include "QtCore/QJsonDocument"
+#include "QtCore/QJsonArray"
+#include "QtCore/QDebug"
+
 #include "data.h"
 #include "tile.h"
 #include "style.h"

@@ -1,10 +1,10 @@
 #ifndef PBF_H
 #define PBF_H
 
-#include <QVariant>
-#include <QVector>
-#include <QHash>
-#include <QPainterPath>
+#include  "QtCore/QVariant"
+#include  "QtCore/QVector"
+#include  "QtCore/QHash"
+#include  "QtGui/QPainterPath"
 #include "data.h"
 
 

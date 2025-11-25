@@ -1,8 +1,8 @@
 #ifndef TILE_H
 #define TILE_H
 
-#include <QImage>
-#include <QPainter>
+#include "QtGui/QImage"
+#include "QtGui/QPainter"
 #include "text.h"
 
 class Tile {

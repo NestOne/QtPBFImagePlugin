@@ -1,7 +1,7 @@
 #ifndef TEXTPOINTITEM_H
 #define TEXTPOINTITEM_H
 
-#include <QImage>
+#include "QtGui/QImage"
 #include "text.h"
 #include "textitem.h"
 
