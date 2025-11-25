@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QtPBFImagePlugin 架构图</title>
+</head>
+<body style="margin: 0; padding: 20px; font-family: Arial, sans-serif; background-color: #f5f5f5;">
+    <!-- 标题区域 -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <h1 style="color: #333; margin: 0;">QtPBFImagePlugin 架构图</h1>
+    </div>
+
+    <!-- 整体容器 -->
+    <div style="display: flex; flex-direction: column; gap: 15px;">
+        <!-- 1. 仓库作用 -->
+        <div style="background-color: #e6f7ff; border-radius: 5px; padding: 15px; border: 1px solid #b3d9ff;">
+            <h2 style="color: #1890ff; margin-top: 0; border-bottom: 1px solid #b3d9ff; padding-bottom: 5px;">仓库作用</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+                <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                    Qt图像插件，用于显示Mapbox矢量瓦片(PBF格式)
+                </div>
+                <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                    解析矢量瓦片数据、应用自定义样式并渲染为图像
+                </div>
+                <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                    支持Mapbox、Tilezen、OpenMapTiles等数据源
+                </div>
+                <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                    提供多种预设样式，通过JSON配置文件定义
+                </div>
+                <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                    项目状态：已废弃(abandoned)
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 代码结构 -->
+        <div style="background-color: #fff7e6; border-radius: 5px; padding: 15px; border: 1px solid #ffe0b3;">
+            <h2 style="color: #fa8c16; margin-top: 0; border-bottom: 1px solid #ffe0b3; padding-bottom: 5px;">代码结构</h2>
+            
+            <!-- 2.1 核心源码 -->
+            <div style="margin-bottom: 15px;">
+                <h3 style="color: #fa8c16; margin-bottom: 10px;">核心源码 (src/)</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>pbfhandler.cpp</strong><br>处理PBF格式数据，提供JSON序列化功能
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>style.cpp</strong><br>实现矢量瓦片的渲染逻辑
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>text.cpp/.h</strong><br>处理文本标签的渲染，包括布局和碰撞检测
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>function.cpp</strong><br>提供插值计算功能，处理动态属性
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2.2 样式配置 -->
+            <div style="margin-bottom: 15px;">
+                <h3 style="color: #fa8c16; margin-bottom: 10px;">样式配置 (style/)</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>Protomaps/style.json</strong><br>Protomaps数据源样式配置
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>OpenMapTiles/style.json</strong><br>OpenMapTiles数据源样式配置
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>Mapbox/style.json</strong><br>Mapbox数据源样式配置
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>Versatiles/style.json</strong><br>Versatiles数据源样式配置
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>COROS/style.json</strong><br>COROS数据源样式配置
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>样式配置项</strong><br>图层过滤、布局、绘制属性等
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2.3 构建与CI配置 -->
+            <div style="margin-bottom: 15px;">
+                <h3 style="color: #fa8c16; margin-bottom: 10px;">构建与CI配置</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>GitHub Actions</strong><br>linux.yml、android.yml、osx.yml
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>AppVeyor</strong><br>.appveyor.yml (Windows构建)
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 2.4 其他文件 -->
+            <div>
+                <h3 style="color: #fa8c16; margin-bottom: 10px;">其他文件</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>README.md</strong><br>项目说明、使用示例
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>LICENSE</strong><br>LGPLv3授权
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>.gitignore</strong><br>忽略编译生成文件
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 调用方式 -->
+        <div style="background-color: #f6ffed; border-radius: 5px; padding: 15px; border: 1px solid #b7eb8f;">
+            <h2 style="color: #52c41a; margin-top: 0; border-bottom: 1px solid #b7eb8f; padding-bottom: 5px;">调用方式</h2>
+            
+            <!-- 3.1 构建前提 -->
+            <div style="margin-bottom: 15px;">
+                <h3 style="color: #52c41a; margin-bottom: 10px;">构建前提</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        依赖Qt框架：Qt5(≥5.15)或Qt6
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        开发工具：qmake、make/nmake
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        Android构建需JDK、Android SDK和NDK
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3.2 构建步骤 -->
+            <div style="margin-bottom: 15px;">
+                <h3 style="color: #52c41a; margin-bottom: 10px;">构建步骤</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>Linux示例</strong><br>克隆仓库 → qmake配置 → make编译
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>Android示例</strong><br>安装依赖 → 配置环境 → 构建
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        <strong>生成文件</strong><br>Linux: libpbf.so<br>Windows: pbf5.dll<br>macOS: libpbf.dylib
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 3.3 插件使用 -->
+            <div>
+                <h3 style="color: #52c41a; margin-bottom: 10px;">插件使用</h3>
+                <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        放置插件文件到Qt应用插件目录
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        通过Qt图像加载机制加载矢量瓦片
+                    </div>
+                    <div style="background-color: rgba(255, 255, 255, 0.8); border: 1px solid #d9d9d9; border-radius: 3px; padding: 10px; flex: 1; min-width: 200px;">
+                        自定义样式：修改JSON文件配置图层渲染规则
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
