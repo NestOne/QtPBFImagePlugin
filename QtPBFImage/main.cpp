@@ -7,6 +7,11 @@
 #include "QtCore/QTextStream"
 #include "QtConcurrent/QtConcurrent"
 #include "QtCore/QRegularExpression"
+//#include "QtWidgets/qapplication.h"
+
+#include "../src/UGMvtRender.h"
+
+#include <chrono>
 
 //
 //class App : public QGuiApplication
@@ -118,28 +123,60 @@
 
 int main()
 {
-	bool _hidpi = false;
-	QDir _outdir;
-	QFileInfo fi;
-	QRegularExpression _re;
-	QImage image;
-	QRegularExpressionMatch match = _re.match(fi.baseName());
-	QByteArray zoom(match.captured(1).toLatin1());
+	//int argc = 0;
+	//char** argv = nullptr;
+	//if (qApp == nullptr)
+	//{
+	//	QCoreApplication::addLibraryPath("E:/GitHub/mvt2png/Debug/bin/platforms");
+	//	new QApplication(argc, argv);
+	//}
 
-	QImageReader reader(fi.absoluteFilePath(), zoom);
-	if (_hidpi)
-		reader.setScaledSize(QSize(1024, 1024));
 
-	if (reader.read(&image)) {
-		QString outfile(_outdir.absoluteFilePath(fi.completeBaseName() + ".png"));
-		if (!image.save(outfile, "PNG")) {
-			QTextStream err(stderr);
-			err << outfile << ": error saving image\n";
-		}
-	}
-	else {
-		QTextStream err(stderr);
-		err << fi.absoluteFilePath() << ": " << reader.errorString() << "\n";
-	}
+     // --- 1. 计时：加载样式 ---
+    std::cout << "开始加载样式..." << std::endl;
+    auto start_load = std::chrono::high_resolution_clock::now();
+
+    UGMvtRender::loadStyles("E:/QtPBFImagePlugin/style");
+
+    auto end_load = std::chrono::high_resolution_clock::now();
+    auto duration_load = std::chrono::duration_cast<std::chrono::milliseconds>(end_load - start_load);
+    std::cout << "样式加载完毕，耗时: " << duration_load.count() << " 毫秒" << std::endl << std::endl;
+
+
+    // --- 2. 计时：渲染 MVT ---
+    UGMvtRender render;
+    std::cout << "开始渲染 MVT 文件..." << std::endl;
+    auto start_render = std::chrono::high_resolution_clock::now();
+
+    QImage* pImage = render.render("E:/GitHub/mvt2png/China/tiles/6/53/26.mvt", 1, 5, 0);
+
+    auto end_render = std::chrono::high_resolution_clock::now();
+    auto duration_render = std::chrono::duration_cast<std::chrono::milliseconds>(end_render - start_render);
+    std::cout << "渲染完毕，耗时: " << duration_render.count() << " 毫秒" << std::endl << std::endl;
+
+
+    // --- 3. 计时：保存图片 ---
+    QString outfile("E:/GitHub/mvt2png/China/tiles/6/53/26.png");
+    std::cout << "开始保存图片..." << std::endl;
+    auto start_save = std::chrono::high_resolution_clock::now();
+
+    if (pImage) {
+        pImage->save(outfile, "PNG");
+    }
+
+    auto end_save = std::chrono::high_resolution_clock::now();
+    auto duration_save = std::chrono::duration_cast<std::chrono::milliseconds>(end_save - start_save);
+    std::cout << "图片保存完毕，耗时: " << duration_save.count() << " 毫秒" << std::endl << std::endl;
+
+
     std::cout << "Hello World!\n";
+
+    // 重要提示：如果 render.render() 函数分配了内存 (返回一个 new QImage*)，
+    // 您需要在使用后手动释放它以避免内存泄漏。
+    if (pImage) {
+        delete pImage;
+        pImage = nullptr;
+    }
+
+    return 0;
 }

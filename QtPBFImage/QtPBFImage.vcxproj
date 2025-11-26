@@ -32,7 +32,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v141</PlatformToolset>
     <UseOfMfc>false</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
@@ -93,7 +93,7 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>../Bin_Unicode_x64/</OutDir>
     <TargetName>Su$(ProjectName)</TargetName>
-    <TargetExt>.uge</TargetExt>
+    <TargetExt>.exe</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Midl>
@@ -246,8 +246,8 @@
     <ClCompile>
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
-      <AdditionalIncludeDirectories>../ThirdParty_Release_x64/freetype/2.10.4/package/include;../ThirdParty_Release_x64/qt/5.6.0/package/include;../../../Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_AFXEXT;GRAPHICSQT_EXPORTS;_UGUNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\qt\Release\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_AFXEXT;GRAPHICSQT_EXPORTS;_UGUNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -267,14 +267,14 @@
     <Link>
       <OutputFile>$(TargetDir)$(TargetFileName)</OutputFile>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>../ThirdParty_Release_x64/freetype/2.10.4/package/lib;../ThirdParty_Release_x64/qt/5.6.0/package/lib;../Bin_Unicode_x64/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>.\qt\Release\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ProgramDatabaseFile>$(TargetDir)$(TargetName).pdb</ProgramDatabaseFile>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <DataExecutionPrevention>
       </DataExecutionPrevention>
       <ImportLibrary>$(TargetDir)$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>Qt5Gui.lib;Qt5Core.lib;Qt5Widgets.lib;freetype.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>Qt5Gui.lib;Qt5Core.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Bscmake>
@@ -304,6 +304,7 @@
     <ClCompile Include="..\src\textitem.cpp" />
     <ClCompile Include="..\src\textpathitem.cpp" />
     <ClCompile Include="..\src\textpointitem.cpp" />
+    <ClCompile Include="..\src\UGMvtRender.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="StdAfx.cpp" />
   </ItemGroup>
@@ -322,6 +323,7 @@
     <ClInclude Include="..\src\textpathitem.h" />
     <ClInclude Include="..\src\textpointitem.h" />
     <ClInclude Include="..\src\tile.h" />
+    <ClInclude Include="..\src\UGMvtRender.h" />
     <ClInclude Include="StdAfx.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
