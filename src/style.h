@@ -111,9 +111,9 @@ private:
 			QFont font(int zoom) const;
 			Qt::PenCapStyle lineCap(int zoom) const;
 			Qt::PenJoinStyle lineJoin(int zoom) const;
-			Text::Anchor textAnchor(int zoom) const;
+		/*	Text::Anchor textAnchor(int zoom) const;
 			Text::SymbolPlacement symbolPlacement(int zoom) const;
-			Text::RotationAlignment textRotationAlignment(int zoom) const;
+			Text::RotationAlignment textRotationAlignment(int zoom) const;*/
 			bool visible() const {return _visible;}
 
 		private:
@@ -145,9 +145,9 @@ private:
 			  const;
 			qreal opacity(Layer::Type type, int zoom) const;
 			bool antialias(Layer::Type type, int zoom) const;
-			Text::Halo halo(int zoom) const
+			/*Text::Halo halo(int zoom) const
 			  {return Text::Halo(_textHaloColor.value(zoom),
-			  _textHaloWidth.value(zoom), _textHaloBlur.value(zoom));}
+			  _textHaloWidth.value(zoom), _textHaloBlur.value(zoom));}*/
 			QColor iconColor(int zoom) const
 			  {return _iconColor.value(zoom);}
 

@@ -385,8 +385,8 @@ Style::Layer::Layout::Layout(const QJsonObject &json)
 	_textRotationAlignment = FunctionS(json["text-rotation-alignment"]);
 	_textAnchor = FunctionS(json["text-anchor"]);
 
-	if (json.contains("text-font") && json["text-font"].isArray())
-		_font = Font::fromJsonArray(json["text-font"].toArray());
+	/*if (json.contains("text-font") && json["text-font"].isArray())
+		_font = Font::fromJsonArray(json["text-font"].toArray());*/
 
 	// icon
 	_icon = Template(FunctionS(json["icon-image"]));
@@ -411,22 +411,22 @@ QFont Style::Layer::Layout::font(int zoom) const
 	return font;
 }
 
-Text::Anchor Style::Layer::Layout::textAnchor(int zoom) const
-{
-	QString anchor(_textAnchor.value(zoom));
-
-	if (anchor == "left" || anchor == "top-left" || anchor == "bottom-left")
-		return Text::Left;
-	else if (anchor == "right" || anchor == "top-right"
-	  || anchor == "bottom-right")
-		return Text::Right;
-	else if (anchor == "top")
-		return Text::Top;
-	else if (anchor == "bottom")
-		return Text::Bottom;
-	else
-		return Text::Center;
-}
+//Text::Anchor Style::Layer::Layout::textAnchor(int zoom) const
+//{
+//	QString anchor(_textAnchor.value(zoom));
+//
+//	if (anchor == "left" || anchor == "top-left" || anchor == "bottom-left")
+//		return Text::Left;
+//	else if (anchor == "right" || anchor == "top-right"
+//	  || anchor == "bottom-right")
+//		return Text::Right;
+//	else if (anchor == "top")
+//		return Text::Top;
+//	else if (anchor == "bottom")
+//		return Text::Bottom;
+//	else
+//		return Text::Center;
+//}
 
 QFont::Capitalization Style::Layer::Layout::textTransform(int zoom) const
 {
@@ -464,30 +464,30 @@ Qt::PenJoinStyle Style::Layer::Layout::lineJoin(int zoom) const
 		return Qt::MiterJoin;
 }
 
-Text::SymbolPlacement Style::Layer::Layout::symbolPlacement(int zoom) const
-{
-	QString placement(_symbolPlacement.value(zoom));
+//Text::SymbolPlacement Style::Layer::Layout::symbolPlacement(int zoom) const
+//{
+//	QString placement(_symbolPlacement.value(zoom));
+//
+//	if (placement == "line")
+//		return Text::Line;
+//	else if (placement == "line-center")
+//		return Text::LineCenter;
+//	else
+//		return Text::Point;
+//}
 
-	if (placement == "line")
-		return Text::Line;
-	else if (placement == "line-center")
-		return Text::LineCenter;
-	else
-		return Text::Point;
-}
-
-Text::RotationAlignment Style::Layer::Layout::textRotationAlignment(int zoom)
-  const
-{
-	QString alignment(_textRotationAlignment.value(zoom));
-
-	if (alignment == "map")
-		return Text::Map;
-	else if (alignment == "viewport")
-		return Text::Viewport;
-	else
-		return Text::Auto;
-}
+//Text::RotationAlignment Style::Layer::Layout::textRotationAlignment(int zoom)
+//  const
+//{
+//	QString alignment(_textRotationAlignment.value(zoom));
+//
+//	if (alignment == "map")
+//		return Text::Map;
+//	else if (alignment == "viewport")
+//		return Text::Viewport;
+//	else
+//		return Text::Auto;
+//}
 
 Style::Layer::Layer(const QJsonObject &json)
   : _type(Unknown), _minZoom(0), _maxZoom(24)
@@ -553,7 +553,7 @@ void Style::Layer::setPathPainter(Tile &tile, Sprites &sprites) const
 
 void Style::Layer::setTextProperties(Tile &tile) const
 {
-	Text &t = tile.text();
+	/*Text &t = tile.text();
 	int zoom = tile.zoom();
 
 	t.setMaxWidth(_layout.maxTextWidth(zoom));
@@ -563,7 +563,7 @@ void Style::Layer::setTextProperties(Tile &tile) const
 	t.setFont(_layout.font(zoom));
 	t.setSymbolPlacement(_layout.symbolPlacement(zoom));
 	t.setRotationAlignment(_layout.textRotationAlignment(zoom));
-	t.setHalo(_paint.halo(zoom));
+	t.setHalo(_paint.halo(zoom));*/
 }
 
 void Style::Layer::addSymbol(Tile &tile, const QPainterPath &path,
@@ -578,7 +578,7 @@ void Style::Layer::addSymbol(Tile &tile, const QPainterPath &path,
 	if (text.isEmpty() && img.isNull())
 		return;
 
-	tile.text().addLabel(text, img, path);
+	//tile.text().addLabel(text, img, path);
 }
 
 static bool loadSprites(const QDir &styleDir, const QString &json,
@@ -714,7 +714,7 @@ void Style::render(const PBF &data, Tile &tile)
 		drawLayer(**it, _layers.at(i), tile);
 	}
 
-	tile.text().render(&tile.painter());
+	//tile.text().render(&tile.painter());
 
 	//QRectF rect(QPointF(0, 0), QSizeF(tile.size().width() / tile.scale().x(),
 	//  tile.size().height() / tile.scale().y()));
